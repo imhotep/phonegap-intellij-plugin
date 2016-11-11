@@ -36,10 +36,10 @@ public class PhoneGapPlugInstallFromNpm extends PhoneGapPlugInstall {
                 if(exitCode != 0) {
                     postInstall = new Notification("PluginstallError", "Error!", "Error installing plugin", NotificationType.ERROR);
                 } else {
+                    project.getBaseDir().refresh(false, true);
                     postInstall = new Notification("PluginstallSucess", "Success!", "Plugin Installed successfully!", NotificationType.INFORMATION);
                 }
                 Notifications.Bus.notify(postInstall);
-                project.getBaseDir().refresh(false, true);
             }).start();
         }
     }
